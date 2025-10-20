@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL UNIQUE,
+  `password` VARCHAR(255) NOT NULL,
+  `role` ENUM('seller', 'buyer', 'admin') NOT NULL DEFAULT 'buyer',
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
