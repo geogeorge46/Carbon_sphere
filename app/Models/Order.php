@@ -97,4 +97,15 @@ class Order extends Model {
         $this->db->bind(':seller_id', $sellerId);
         return $this->db->resultSet();
     }
+    
+    // Get user orders
+    public function getUserOrders($userId) {
+        $this->db->query('
+            SELECT * FROM orders 
+            WHERE user_id = :user_id 
+            ORDER BY created_at DESC
+        ');
+        $this->db->bind(':user_id', $userId);
+        return $this->db->resultSet();
+    }
 }

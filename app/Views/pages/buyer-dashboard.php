@@ -13,8 +13,9 @@
     </div>
 
     <!-- Flash Messages -->
-    <?php if (flash('payment_success')) : ?>
-        <?php $msg = flash('payment_success'); ?>
+    <?php 
+    $msg = flash('payment_success');
+    if ($msg !== false) : ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?php echo htmlspecialchars($msg['message']); ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

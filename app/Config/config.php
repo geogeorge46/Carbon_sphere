@@ -9,6 +9,6 @@ define('DB_NAME', 'carbon_sphere');
 // App Root
 define('APPROOT', dirname(dirname(__FILE__)));
 // URL Root
-define('URLROOT', 'http://localhost/carbon-sphere/public');
+define('URLROOT', '/carbon-sphere/public');
 // Site Name
 define('SITENAME', 'Carbon Sphere');

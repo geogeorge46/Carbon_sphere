@@ -45,14 +45,8 @@ class Pages extends Controller {
     $ecoStats = $ecoTokenService->getUserEcoStats($userId);
     
     // Get user orders
-    $orderModel->db = DB::getInstance();
-    $orderModel->db->query('
-      SELECT * FROM orders 
-      WHERE user_id = :user_id 
-      ORDER BY created_at DESC
-    ');
-    $orderModel->db->bind(':user_id', $userId);
-    $orders = $orderModel->db->resultSet();
+    // Create a method to get user orders instead of directly accessing protected property
+    $orders = $orderModel->getUserOrders($userId);
 
     // Get user rank
     $userRank = $ecoTokenService->getUserRank($userId);
