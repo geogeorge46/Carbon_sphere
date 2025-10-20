@@ -3,34 +3,36 @@
     require APPROOT . '/Views/inc/header.php';
 ?>
 
-<div class="container mt-5 mb-5">
-    <!-- Page Header -->
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <h1 class="mb-2">🌍 EcoWorld Store</h1>
-            <p class="text-muted">Shop eco-friendly products and earn carbon tokens</p>
-        </div>
-    </div>
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/home-page.css">
 
+<!-- Hero Section -->
+<div class="hero-section" style="padding: 100px 0;">
+    <div class="container">
+        <h1 style="font-size: 3.5rem; margin-bottom: 15px;">🛍️ EcoWorld Store</h1>
+        <p class="hero-tagline">Shop sustainable products and earn rewards</p>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
     <!-- Search & Filter Section -->
-    <div class="row mb-4">
+    <div class="row mb-5">
         <div class="col-md-12">
-            <form method="GET" class="form-inline" id="filter-form">
-                <div class="form-group me-3">
-                    <input type="text" name="search" class="form-control" placeholder="Search products..." value="<?php echo htmlspecialchars($data['search_query']); ?>">
+            <form method="GET" class="filter-form-container" id="filter-form">
+                <div class="filter-group">
+                    <input type="text" name="search" class="filter-search" placeholder="🔍 Search products..." value="<?php echo htmlspecialchars($data['search_query']); ?>">
                 </div>
                 
-                <div class="form-group me-3">
-                    <select name="sort" class="form-control" id="sort-select">
-                        <option value="newest" <?php echo $data['sort_by'] === 'newest' ? 'selected' : ''; ?>>Newest</option>
-                        <option value="price_low" <?php echo $data['sort_by'] === 'price_low' ? 'selected' : ''; ?>>Price: Low to High</option>
-                        <option value="price_high" <?php echo $data['sort_by'] === 'price_high' ? 'selected' : ''; ?>>Price: High to Low</option>
-                        <option value="eco_friendly" <?php echo $data['sort_by'] === 'eco_friendly' ? 'selected' : ''; ?>>Most Eco-Friendly</option>
+                <div class="filter-group">
+                    <select name="sort" class="filter-select" id="sort-select">
+                        <option value="newest" <?php echo $data['sort_by'] === 'newest' ? 'selected' : ''; ?>>⭐ Newest</option>
+                        <option value="price_low" <?php echo $data['sort_by'] === 'price_low' ? 'selected' : ''; ?>>💰 Price: Low to High</option>
+                        <option value="price_high" <?php echo $data['sort_by'] === 'price_high' ? 'selected' : ''; ?>>💰 Price: High to Low</option>
+                        <option value="eco_friendly" <?php echo $data['sort_by'] === 'eco_friendly' ? 'selected' : ''; ?>>🌱 Most Eco-Friendly</option>
                     </select>
                 </div>
                 
-                <button type="submit" class="btn btn-success me-2">Filter</button>
-                <a href="<?php echo URLROOT; ?>/products/browse" class="btn btn-secondary">Reset</a>
+                <button type="submit" class="btn-filter-apply">Filter</button>
+                <a href="<?php echo URLROOT; ?>/products/browse" class="btn-filter-reset">Reset</a>
             </form>
         </div>
     </div>
@@ -45,87 +47,65 @@
     <?php endif; ?>
 
     <!-- Products Grid -->
-    <div class="row">
+    <div class="row g-4">
         <?php if (empty($data['products'])) : ?>
-            <div class="col-md-12 text-center py-5">
-                <h4 class="text-muted">No products found</h4>
-                <p class="text-muted mb-3">Try adjusting your search or filters</p>
-                <a href="<?php echo URLROOT; ?>/products/browse" class="btn btn-success">View All Products</a>
+            <div class="col-md-12">
+                <div class="empty-state">
+                    <div class="empty-state-icon">📦</div>
+                    <h3>No Products Found</h3>
+                    <p>Try adjusting your search or filters to find what you're looking for</p>
+                    <a href="<?php echo URLROOT; ?>/products/browse" class="btn" style="background: linear-gradient(135deg, #0d7e4d, #1ab366); color: white; border-radius: 50px; padding: 12px 40px; font-weight: 700; text-decoration: none; display: inline-block;">View All Products</a>
+                </div>
             </div>
         <?php else : ?>
             <?php foreach ($data['products'] as $product) : ?>
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="card product-card h-100 shadow-sm hover-lift">
-                        <!-- Product Image -->
-                        <div class="product-image-wrapper">
+                <div class="col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-image">
                             <?php if (!empty($product->image_url)) : ?>
-                                <img src="<?php echo htmlspecialchars($product->image_url); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product->product_name); ?>" style="height: 250px; object-fit: cover;">
+                                <img src="<?php echo htmlspecialchars($product->image_url); ?>" alt="<?php echo htmlspecialchars($product->product_name); ?>">
                             <?php else : ?>
-                                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 250px;">
-                                    <span class="text-muted">📦 No Image</span>
+                                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e0f2f1, #c8e6c9);">
+                                    <span style="color: #0d7e4d; font-weight: bold;">📦 No Image</span>
                                 </div>
                             <?php endif; ?>
-                            
-                            <!-- Eco Rating Badge -->
-                            <span class="badge bg-success position-absolute top-0 end-0 m-2">
-                                ♻️ <?php echo round($product->carbon_footprint, 2); ?> kg CO₂e
-                            </span>
+                            <span class="product-badge eco">♻️ <?php echo round($product->carbon_footprint, 2); ?> kg CO₂e</span>
                         </div>
 
-                        <!-- Product Details -->
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo htmlspecialchars($product->product_name); ?></h5>
+                        <div class="product-body">
+                            <h5 class="product-title"><?php echo htmlspecialchars($product->product_name); ?></h5>
                             
-                            <!-- Category -->
-                            <p class="text-muted small mb-2">
-                                <i class="fas fa-tag"></i> Category ID: <?php echo $product->category_id; ?>
+                            <p class="product-description">
+                                <?php echo htmlspecialchars(substr($product->description, 0, 80)); ?>...
+                            </p>
+                            
+                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 12px;">
+                                👤 <?php echo htmlspecialchars($product->first_name . ' ' . $product->last_name); ?>
                             </p>
 
-                            <!-- Description -->
-                            <p class="card-text small text-muted">
-                                <?php echo substr(htmlspecialchars($product->description), 0, 100); ?>...
-                            </p>
-
-                            <!-- Seller Info -->
-                            <p class="small text-muted mb-3">
-                                <i class="fas fa-user"></i> 
-                                <?php echo htmlspecialchars($product->first_name . ' ' . $product->last_name); ?>
-                            </p>
-
-                            <!-- Price Section -->
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="h5 mb-0 text-success">₹<?php echo number_format($product->price, 2); ?></span>
-                                <?php if (isset($product->eco_rating) && $product->eco_rating) : ?>
-                                    <span class="badge bg-info">⭐ <?php echo round($product->eco_rating, 1); ?></span>
-                                <?php endif; ?>
-                            </div>
-
-                            <!-- Action Buttons -->
-                            <div class="d-grid gap-2">
-                                <?php if ($data['is_logged_in']) : ?>
-                                    <form method="POST" action="<?php echo URLROOT; ?>/cart/add" class="add-to-cart-form">
-                                        <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
-                                        <input type="hidden" name="quantity" value="1">
-                                        <button type="submit" class="btn btn-success btn-sm w-100">
-                                            <i class="fas fa-shopping-cart"></i> Add to Cart
-                                        </button>
-                                    </form>
-                                    <a href="<?php echo URLROOT; ?>/products/show/<?php echo $product->product_id; ?>" class="btn btn-outline-primary btn-sm">
-                                        <i class="fas fa-eye"></i> View Details
-                                    </a>
-                                <?php else : ?>
-                                    <a href="<?php echo URLROOT; ?>/auth/login" class="btn btn-success btn-sm">
-                                        <i class="fas fa-login"></i> Login to Shop
-                                    </a>
-                                <?php endif; ?>
+                            <div class="product-footer">
+                                <div class="product-price">₹<?php echo number_format($product->price, 2); ?></div>
+                                <span class="product-carbon">🪙 <?php echo (int)($product->carbon_footprint * 10); ?> tokens</span>
                             </div>
                         </div>
 
-                        <!-- Carbon Token Info -->
-                        <div class="card-footer bg-light">
-                            <small class="text-muted">
-                                🪙 Earn ~<?php echo (int)($product->carbon_footprint * 10); ?> tokens on purchase
-                            </small>
+                        <div style="padding: 15px 20px; border-top: 1px solid #eee;">
+                            <?php if ($data['is_logged_in']) : ?>
+                                <form method="POST" action="<?php echo URLROOT; ?>/cart/add" style="margin-bottom: 10px;">
+                                    <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" style="width: 100%; padding: 10px; background: linear-gradient(135deg, #0d7e4d, #1ab366); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
+                                        🛒 Add to Cart
+                                    </button>
+                                </form>
+                                <a href="<?php echo URLROOT; ?>/products/show/<?php echo $product->product_id; ?>" class="btn-view" style="text-decoration: none; display: block; text-align: center;">
+                                    👁️ View Details
+                                </a>
+                            <?php else : ?>
+                                <a href="<?php echo URLROOT; ?>/auth/login" class="btn-view" style="text-decoration: none; display: block; text-align: center;">
+                                    🔐 Login to Shop
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -133,36 +113,125 @@
         <?php endif; ?>
     </div>
 
-    <!-- Pagination Info -->
-    <div class="row mt-4">
+    <!-- Info Footer -->
+    <div class="row mt-5 pt-4">
         <div class="col-md-12 text-center">
-            <p class="text-muted">Showing <?php echo count($data['products']); ?> product(s)</p>
+            <p style="color: #666; font-size: 0.95rem;">Showing <strong><?php echo count($data['products']); ?></strong> product(s) • Start shopping sustainable today! 🌱</p>
         </div>
     </div>
 </div>
 
 <style>
-    .product-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 1px solid #e0e0e0;
+    /* Override body background */
+    body { background: #ffffff !important; }
+    
+    /* Filter Form Styling */
+    .filter-form-container {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        align-items: center;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     }
 
-    .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+    .filter-group {
+        flex: 1;
+        min-width: 200px;
     }
 
-    .product-image-wrapper {
-        position: relative;
-        overflow: hidden;
+    .filter-search, .filter-select {
+        width: 100%;
+        padding: 12px 18px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        font-family: inherit;
     }
 
-    .hover-lift {
+    .filter-search:focus, .filter-select:focus {
+        outline: none;
+        border-color: #0d7e4d;
+        box-shadow: 0 0 0 3px rgba(13, 126, 77, 0.1);
+    }
+
+    .btn-filter-apply {
+        padding: 12px 28px;
+        background: linear-gradient(135deg, #0d7e4d, #1ab366);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
         transition: all 0.3s ease;
     }
 
-    .add-to-cart-form {
-        margin-bottom: 0.5rem;
+    .btn-filter-apply:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(13, 126, 77, 0.3);
+    }
+
+    .btn-filter-reset {
+        padding: 12px 28px;
+        background: white;
+        color: #0d7e4d;
+        border: 2px solid #0d7e4d;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+    .btn-filter-reset:hover {
+        background: #f5f5f5;
+        transform: translateY(-2px);
+    }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 80px 40px;
+        background: linear-gradient(135deg, #f8f9fa, #e0f2f1);
+        border-radius: 20px;
+    }
+
+    .empty-state-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+
+    .empty-state h3 {
+        font-size: 2rem;
+        color: #0d7e4d;
+        font-weight: 900;
+        margin-bottom: 10px;
+    }
+
+    .empty-state p {
+        color: #666;
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .filter-form-container {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .filter-group {
+            width: 100%;
+        }
+
+        .btn-filter-apply, .btn-filter-reset {
+            width: 100%;
+        }
     }
 </style>
 

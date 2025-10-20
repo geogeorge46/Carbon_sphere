@@ -1,0 +1,580 @@
+/* About Us Page Styles */
+
+/* Hero Section */
+.about-hero {
+  background: linear-gradient(135deg, #0d7e4d 0%, #1ab366 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  margin-bottom: 60px;
+  border-radius: 0;
+}
+
+.about-hero .hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.about-hero .hero-tagline {
+  font-size: 1.3rem;
+  opacity: 0.95;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Mission & Vision Section */
+.mission-section {
+  background: white;
+  padding: 80px 20px;
+  margin-bottom: 60px;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mission-card {
+  background: linear-gradient(135deg, #f0fdf4 0%, #e8f5e9 100%);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid #c8e6c9;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(13, 126, 77, 0.1);
+}
+
+.mission-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(13, 126, 77, 0.2);
+}
+
+.mission-card .card-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.mission-card h3 {
+  color: #0d7e4d;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.mission-card p {
+  color: #555;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+/* Story Section */
+.story-section {
+  background: #f9f9f9;
+  padding: 80px 20px;
+  margin-bottom: 60px;
+}
+
+.story-content h2 {
+  color: #0d7e4d;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 800;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.story-item {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  position: relative;
+  border-left: 4px solid #0d7e4d;
+}
+
+.story-number {
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  background: linear-gradient(135deg, #0d7e4d, #1ab366);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.story-item h4 {
+  color: #0d7e4d;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.story-item p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Why Us Section */
+.why-us-section {
+  background: white;
+  padding: 80px 20px;
+  margin-bottom: 60px;
+}
+
+.why-us-section h2 {
+  color: #0d7e4d;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 800;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature {
+  background: #f9f9f9;
+  padding: 35px;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.feature:hover {
+  border-color: #0d7e4d;
+  box-shadow: 0 8px 20px rgba(13, 126, 77, 0.15);
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.feature h4 {
+  color: #0d7e4d;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.feature p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+/* Impact Section */
+.impact-section {
+  background: linear-gradient(135deg, #0d7e4d 0%, #1ab366 100%);
+  color: white;
+  padding: 80px 20px;
+  margin-bottom: 60px;
+  border-radius: 0;
+}
+
+.impact-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 800;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stat {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.stat-description {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* Values Section */
+.values-section {
+  background: white;
+  padding: 80px 20px;
+  margin-bottom: 60px;
+}
+
+.values-section h2 {
+  color: #0d7e4d;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 800;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.value-card {
+  background: linear-gradient(135deg, #f0fdf4 0%, #e8f5e9 100%);
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px solid #c8e6c9;
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(13, 126, 77, 0.2);
+}
+
+.value-icon {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.value-card h4 {
+  color: #0d7e4d;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.value-card p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+/* Team Section */
+.team-section {
+  background: #f9f9f9;
+  padding: 80px 20px;
+  margin-bottom: 60px;
+}
+
+.team-section h2 {
+  color: #0d7e4d;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.team-intro {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-member {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(13, 126, 77, 0.15);
+}
+
+.member-avatar {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.team-member h4 {
+  color: #0d7e4d;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.team-member p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* Commitment Section */
+.commitment-section {
+  background: linear-gradient(135deg, #e8f5e9 0%, #f0fdf4 100%);
+  padding: 80px 20px;
+  margin-bottom: 60px;
+  border-left: 6px solid #0d7e4d;
+  border-right: 6px solid #0d7e4d;
+}
+
+.commitment-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.commitment-section h2 {
+  color: #0d7e4d;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.commitment-section > .container > .commitment-content > p {
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.commitment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.commitment-list li {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 18px;
+  padding-left: 0;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+/* CTA Section */
+.about-cta {
+  background: linear-gradient(135deg, #0d7e4d 0%, #1ab366 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 0;
+}
+
+.about-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 900;
+}
+
+.about-cta > .container > p {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary-cta {
+  background: white;
+  color: #0d7e4d;
+  padding: 15px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: 2px solid white;
+}
+
+.btn-primary-cta:hover {
+  background: #f0fdf4;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.btn-secondary-cta {
+  background: transparent;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: 2px solid white;
+}
+
+.btn-secondary-cta:hover {
+  background: white;
+  color: #0d7e4d;
+  transform: translateY(-3px);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-hero .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .about-hero .hero-tagline {
+    font-size: 1rem;
+  }
+
+  .mission-grid,
+  .story-grid,
+  .features-grid,
+  .stats-grid,
+  .values-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-section,
+  .story-section,
+  .why-us-section,
+  .impact-section,
+  .values-section,
+  .team-section,
+  .commitment-section,
+  .about-cta {
+    padding: 50px 20px;
+    margin-bottom: 40px;
+  }
+
+  .story-section h2,
+  .why-us-section h2,
+  .impact-section h2,
+  .values-section h2,
+  .team-section h2,
+  .commitment-section h2,
+  .about-cta h2 {
+    font-size: 1.8rem;
+    margin-bottom: 35px;
+  }
+
+  .mission-card,
+  .story-item,
+  .feature,
+  .value-card,
+  .team-member {
+    padding: 30px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary-cta,
+  .btn-secondary-cta {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .mission-card,
+  .story-item,
+  .feature,
+  .value-card,
+  .team-member {
+    padding: 20px;
+  }
+
+  .story-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .commitment-list li {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+}

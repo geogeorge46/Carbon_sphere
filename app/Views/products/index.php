@@ -4,17 +4,23 @@
       <h1>Products</h1>
     </div>
     <div class="col-md-6">
-      <a href="<?php echo URLROOT; ?>/products/add" class="btn btn-primary pull-right">
-        <i class="fa fa-pencil"></i> Add Product
-      </a>
+      <?php if(!empty($data['is_seller']) && $data['is_seller']): ?>
+        <a href="<?php echo URLROOT; ?>/products/add" class="btn btn-primary pull-right">
+          <i class="fa fa-pencil"></i> Add Product
+        </a>
+      <?php endif; ?>
     </div>
   </div>
 
   <?php if(empty($data['products'])) : ?>
     <div class="alert alert-info text-center mt-4">
       <h4>No products available</h4>
-      <p>Be the first to add a product!</p>
-      <a href="<?php echo URLROOT; ?>/products/add" class="btn btn-success">Add a Product</a>
+      <?php if(!empty($data['is_seller']) && $data['is_seller']): ?>
+        <p>Be the first to add a product!</p>
+        <a href="<?php echo URLROOT; ?>/products/add" class="btn btn-success">Add a Product</a>
+      <?php else: ?>
+        <p>Check back soon for amazing eco-friendly products from our sellers!</p>
+      <?php endif; ?>
     </div>
   <?php else : ?>
     <?php foreach($data['products'] as $product) : ?>

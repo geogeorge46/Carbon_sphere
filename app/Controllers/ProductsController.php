@@ -71,15 +71,29 @@ class ProductsController extends Controller {
      */
     public function index() {
         $products = $this->productModel->getProducts();
+        
+        // Check if current user is a seller
+        $isSeller = false;
+        if(isLoggedIn()) {
+            $user = $this->userModel->getUserById($_SESSION['user_id']);
+            $isSeller = ($user && $user->role === 'seller');
+        }
 
         $data = [
-            'products' => $products
+            'products' => $products,
+            'is_seller' => $isSeller
         ];
 
         $this->view('products/index', $data);
     }
 
     public function add(){
+      // Check if user is logged in
+      if(!isLoggedIn()){
+        header('location: ' . URLROOT . '/auth/login');
+        exit;
+      }
+
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Sanitize POST array
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -150,6 +164,12 @@ class ProductsController extends Controller {
     }
 
     public function edit($id){
+      // Check if user is logged in
+      if(!isLoggedIn()){
+        header('location: ' . URLROOT . '/auth/login');
+        exit;
+      }
+
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Sanitize POST array
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -202,6 +222,7 @@ class ProductsController extends Controller {
         // Check for owner
         if($product->seller_id != $_SESSION['user_id']){
           header('location: ' . URLROOT . '/products');
+          exit;
         }
 
         $data = [
@@ -219,6 +240,12 @@ class ProductsController extends Controller {
     }
 
     public function delete($id){
+      // Check if user is logged in
+      if(!isLoggedIn()){
+        header('location: ' . URLROOT . '/auth/login');
+        exit;
+      }
+
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Get existing product from model
         $product = $this->productModel->getProductById($id);
@@ -226,6 +253,7 @@ class ProductsController extends Controller {
         // Check for owner
         if($product->seller_id != $_SESSION['user_id']){
           header('location: ' . URLROOT . '/products');
+          exit;
         }
 
         if($this->productModel->deleteProduct($id)){
