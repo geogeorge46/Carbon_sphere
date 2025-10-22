@@ -7,7 +7,7 @@ class Controller {
   // Load model
   public function model($model) {
     // Require model file
-    require_once '../app/Models/' . $model . '.php';
+    require_once APPROOT . '/Models/' . $model . '.php';
 
     // Instatiate model
     return new $model();
@@ -16,9 +16,9 @@ class Controller {
   // Load view
   public function view($view, $data = []) {
     // Check for view file
-    if (file_exists('../app/Views/' . $view . '.php')) {
+    if (file_exists(APPROOT . '/Views/' . $view . '.php')) {
       extract($data);
-      require_once '../app/Views/' . $view . '.php';
+      require_once APPROOT . '/Views/' . $view . '.php';
     } else {
       // View does not exist
       die('View does not exist');

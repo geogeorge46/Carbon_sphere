@@ -13,12 +13,12 @@ class Core {
     $url = $this->getUrl();
 
     // Look in controllers for first value
-    if(isset($url[0]) && file_exists('../app/Controllers/' . ucwords($url[0]). 'Controller.php')){
+    if(isset($url[0]) && file_exists(APPROOT . '/Controllers/' . ucwords($url[0]). 'Controller.php')){
       // If a controller with 'Controller' suffix exists, set it
       $this->currentController = ucwords($url[0]) . 'Controller';
       // Unset 0 Index
       unset($url[0]);
-    } elseif (isset($url[0]) && file_exists('../app/Controllers/' . ucwords($url[0]). '.php')) {
+    } elseif (isset($url[0]) && file_exists(APPROOT . '/Controllers/' . ucwords($url[0]). '.php')) {
         // If a controller without the suffix exists (like Pages), set it
         $this->currentController = ucwords($url[0]);
         // Unset 0 Index
@@ -26,7 +26,7 @@ class Core {
     }
 
     // Require the controller
-    require_once '../app/Controllers/'. $this->currentController . '.php';
+    require_once APPROOT . '/Controllers/'. $this->currentController . '.php';
 
     // Instantiate controller class
     $this->currentController = new $this->currentController;

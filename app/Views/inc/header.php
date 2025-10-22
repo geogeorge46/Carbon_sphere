@@ -48,7 +48,7 @@ header("Pragma: no-cache");
           </li>
           <?php endif; ?>
           <li class="nav-item">
-            <a class="nav-link" href="#">Welcome <?php echo $_SESSION['user_name']; ?></a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/dashboard">Welcome <?php echo $_SESSION['user_name']; ?></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/auth/logout">Logout</a>
